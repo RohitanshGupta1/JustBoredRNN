@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohitansh Gupta | Personal Website</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#000;
+overflow:hidden;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.main{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+animation:fade 2s;
+}
+
+.card{
+width:90%;
+max-width:800px;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(10px);
+border:1px solid #00ff99;
+border-radius:20px;
+padding:30px;
+box-shadow:0 0 30px #00ff99;
+}
+
+h1{
+text-align:center;
+font-size:50px;
+color:#00ff99;
+margin-bottom:10px;
+}
+
+h3{
+text-align:center;
+margin-bottom:20px;
+color:#8affc7;
+}
+
+.info{
+font-size:20px;
+line-height:2;
+}
+
+a{
+color:#00ff99;
+text-decoration:none;
+}
+
+.footer{
+text-align:center;
+margin-top:20px;
+color:#999;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0px);
+}
+}
+</style>
+
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="main">
+
+<div class="card">
+
+<h1>ROHITANSH</h1>
+<h3>Kid Who Codes • Creator • Gamer</h3>
+
+<div class="info">
+
+<p>👤 Name : Rohitansh Gupta</p>
+
+<p>🏠 From : Jammu & Kashmir 🇮🇳</p>
+
+<p>💻 Learning : C, C++, Programming & Binary</p>
+
+<p>📚 Hobby : Reading Books</p>
+
+<p>🎮 Creator : Minecraft Mods & Anime Videos</p>
+
+<p>📺 YouTube :
+<a href="https://youtube.com/@justrohitansh" target="_blank">
+@JustRohitansh
+</a>
+</p>
+
+<p>📷 Instagram :
+<a href="https://instagram.com/kid_who_codes" target="_blank">
+@kid_who_codes
+</a>
+</p>
+
+<p>🐦 X :
+<a href="https://x.com/RohitAnshFRFR" target="_blank">
+@RohitAnshFRFR
+</a>
+</p>
+
+<p>⚡ Alias : DarkRohitanshX</p>
+
+<p>🚀 Dream : Build futuristic apps & technology</p>
+
+</div>
+
+<div class="footer">
+Made with 💚 Matrix Style
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+const fontSize=18;
+const columns=canvas.width/fontSize;
+
+const drops=[];
+
+for(let x=0;x<columns;x++){
+drops[x]=1;
+}
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff66";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height&&Math.random()>0.975){
+drops[i]=0;
+}
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
+
+window.onresize=function(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+};
+
+</script>
+
+</body>
+</html>
